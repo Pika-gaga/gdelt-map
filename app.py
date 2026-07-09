@@ -65,7 +65,7 @@ else:
     selected_country = st.sidebar.selectbox("选择国家", ["全部"] + sorted(df['国家'].unique().tolist()))
 
     # 正负向筛选
-    sentiment_filter = st.sidebar.selectbox("筛选事件极性",
+    sentiment_filter = st.sidebar.selectbox("筛选事件",
                                             ["所有事件", "仅正向事件 (Goldstein > 0)", "仅负向事件 (Goldstein < 0)"])
 
     # 应用筛选逻辑
@@ -78,7 +78,7 @@ else:
     elif sentiment_filter == "仅负向事件 (Goldstein < 0)":
         filtered_df = filtered_df[filtered_df['GOLDSTEINSCALE_30'] < 0]
 
-    st.markdown(f"### 🌍 全球事件热点分布 (当前筛选: {selected_country} | {sentiment_filter})")
+    st.markdown(f"### 🌍 GDELT全球热点事件监测地图")
 
     if not filtered_df.empty:
         # 定义颜色逻辑：正分绿，负分红，零分灰
